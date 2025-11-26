@@ -4,6 +4,8 @@ Framework pour FiveM (GTA V) développé en TypeScript avec une architecture mod
 Ce projet a pour objectif de fournir une base propre, extensible et typée pour créer des systèmes
 serveur/client sur FiveM.
 
+(Publication de la version complete le 1/12/2025) 
+
 ## 🚀 Fonctionnalités principales
 
 - Architecture modulaire (managers, services, events)
