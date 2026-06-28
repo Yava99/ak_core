@@ -1,0 +1,111 @@
+{
+  "name": "@fivem/core-db",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/server/index.js",
+  "types": "dist/server/index.d.ts",
+  "exports": {
+    "./server/public-api": {
+      "types": "./dist/server/public-api.d.ts",
+      "import": "./dist/server/public-api.js",
+      "require": "./dist/server/public-api.js",
+      "default": "./dist/server/public-api.js"
+    },
+    "./server/db": {
+      "types": "./dist/server/db.d.ts",
+      "import": "./dist/server/db.js",
+      "require": "./dist/server/db.js",
+      "default": "./dist/server/db.js"
+    },
+    "./server/database": {
+      "types": "./dist/server/database.d.ts",
+      "import": "./dist/server/database.js",
+      "require": "./dist/server/database.js",
+      "default": "./dist/server/database.js"
+    },
+    "./server/transaction": {
+      "types": "./dist/server/transaction.d.ts",
+      "import": "./dist/server/transaction.js",
+      "require": "./dist/server/transaction.js",
+      "default": "./dist/server/transaction.js"
+    },
+    "./server/repository/base-repository": {
+      "types": "./dist/server/repository/base-repository.d.ts",
+      "import": "./dist/server/repository/base-repository.js",
+      "require": "./dist/server/repository/base-repository.js",
+      "default": "./dist/server/repository/base-repository.js"
+    },
+    "./server/repository/types": {
+      "types": "./dist/server/repository/types.d.ts",
+      "import": "./dist/server/repository/types.js",
+      "require": "./dist/server/repository/types.js",
+      "default": "./dist/server/repository/types.js"
+    },
+    "./client/public-api": {
+      "types": "./dist/client/public-api.d.ts",
+      "import": "./dist/client/public-api.js",
+      "default": "./dist/client/public-api.js"
+    },
+    "./server/query-helpers": {
+      "types": "./dist/server/query-helpers.d.ts",
+      "import": "./dist/server/query-helpers.js",
+      "require": "./dist/server/query-helpers.js",
+      "default": "./dist/server/query-helpers.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "server/public-api": [
+        "dist/server/public-api.d.ts"
+      ],
+      "server/db": [
+        "dist/server/db.d.ts"
+      ],
+      "server/database": [
+        "dist/server/database.d.ts"
+      ],
+      "server/transaction": [
+        "dist/server/transaction.d.ts"
+      ],
+      "server/repository/base-repository": [
+        "dist/server/repository/base-repository.d.ts"
+      ],
+      "server/repository/types": [
+        "dist/server/repository/types.d.ts"
+      ],
+      "client/public-api": [
+        "dist/client/public-api.d.ts"
+      ],
+      "server/query-helpers": [
+        "dist/server/query-helpers.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "build:server": "esbuild src/server/index.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/index.js",
+    "build:server:api": "esbuild src/server/public-api.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/public-api.js",
+    "build:server:db": "esbuild src/server/db.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/db.js",
+    "build:server:transaction": "esbuild src/server/transaction.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/transaction.js",
+    "build:server:repository:base": "esbuild src/server/repository/base-repository.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/repository/base-repository.js",
+    "build:server:repository:types": "esbuild src/server/repository/types.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/repository/types.js",
+    "build:server:database": "esbuild src/server/database.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/database.js",
+    "build:server:query-helpers": "esbuild src/server/query-helpers.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/query-helpers.js",
+    "build:client": "esbuild src/client/index.ts --bundle --platform=browser --target=es2021 --format=iife --outfile=dist/client/index.js",
+    "build:client:api": "esbuild src/client/public-api.ts --bundle --platform=browser --target=es2021 --format=esm --outfile=dist/client/public-api.js",
+    "build:shared": "esbuild src/shared/index.ts --bundle --platform=neutral --target=es2021 --format=esm --outfile=dist/shared/index.js",
+    "build:shared:runtime": "esbuild src/shared-runtime/index.ts --bundle --platform=neutral --target=es2021 --format=iife --outfile=dist/shared-runtime/index.js",
+    "build": "npm run clean && npm run build:types && npm run build:server && npm run build:server:api && npm run build:server:db && npm run build:server:database && npm run build:server:transaction && npm run build:server:query-helpers && npm run build:server:repository:base && npm run build:server:repository:types && npm run build:client && npm run build:client:api && npm run build:shared && npm run build:shared:runtime",
+    "watch:server": "esbuild src/server/index.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/index.js --watch",
+    "watch:client": "esbuild src/client/index.ts --bundle --platform=browser --target=es2021 --format=iife --outfile=dist/client/index.js --watch",
+    "watch:shared": "esbuild src/shared/index.ts --bundle --platform=neutral --target=es2021 --format=cjs --outfile=dist/shared/index.js --watch",
+    "watch": "npm run watch:server",
+    "clean": "if exist dist rmdir /s /q dist"
+  },
+  "dependencies": {
+    "@fivem/core-config": "*",
+    "@fivem/core-errors": "*",
+    "@fivem/core-logger": "*",
+    "mysql2": "^3.0.0"
+  }
+}
