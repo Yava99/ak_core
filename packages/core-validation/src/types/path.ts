@@ -1,0 +1,1 @@
+export type SchemaPath = Array<string | number>;
