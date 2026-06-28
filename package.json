@@ -1,0 +1,32 @@
+{
+  "name": "workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start:server": "node tools/start-server.js",
+    "build": "npm run build --workspaces --if-present",
+    "watch": "npm run watch --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "create:package": "node tools/create-package.js",
+    "deploy:package": "node tools/deploy-package.js",
+    "deploy:all:package": "node tools/deploy-all-packages.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.27547-1",
+    "@citizenfx/server": "^2.0.27547-1",
+    "@types/node": "^25.5.0",
+    "esbuild": "^0.27.4",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.20.0"
+  }
+}
