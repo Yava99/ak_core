@@ -1,0 +1,34 @@
+{
+  "name": "@fivem/core-module-sdk",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "clean": "if exist dist rmdir /s /q dist"
+  },
+  "dependencies": {
+    "@fivem/core-bootstrap": "*",
+    "@fivem/core-config": "*",
+    "@fivem/core-db": "*",
+    "@fivem/core-errors": "*",
+    "@fivem/core-logger": "*"
+  }
+}
